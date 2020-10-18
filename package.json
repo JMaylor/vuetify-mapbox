@@ -1,22 +1,22 @@
 {
   "name": "vuetify-location-picker",
   "version": "0.1.0",
-	"description": "LocationPicker component for Vuetify.js.",
+  "description": "LocationPicker component for Vuetify.js.",
   "main": "src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/JMaylor/vuetify-mapbox"
-	},
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JMaylor/vuetify-mapbox"
+  },
   "dependencies": {
     "core-js": "^3.6.5",
     "mapbox-gl": "^1.12.0",
     "vue": "^2.6.11",
-    "vuetify": "^2.2.11"
+    "vuetify": "^2.3.14"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
