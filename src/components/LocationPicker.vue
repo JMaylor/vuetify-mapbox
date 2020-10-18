@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<v-toolbar dense floating class="map-toolbar">
+	<v-row>
+		<v-toolbar dense floating class="map-toolbar mt-1" max-width="300px" min-width="300px">
 			<v-form @submit.prevent="search">
 				<v-text-field
 					hide-details
@@ -16,7 +16,7 @@
 			</v-btn>
 		</v-toolbar>
 		<div :id="containerID" :style="containerCSS"></div>
-	</div>
+	</v-row>
 </template>
 
 <script>
@@ -25,7 +25,7 @@
 	export default {
 		props: {
 			value: {
-				type: Object
+				type: Object,
 			},
 			geo: {
 				type: Boolean,
@@ -33,7 +33,7 @@
 			},
 			height: {
 				type: String,
-				default: '500px'
+				default: "500px",
 			},
 			initialLocation: {
 				type: Array,
@@ -150,6 +150,11 @@
 		mounted() {
 			this.initMap();
 		},
+		watch: {
+			height: function() {
+				this.map.resize()
+			}
+		}
 	};
 </script>
 
