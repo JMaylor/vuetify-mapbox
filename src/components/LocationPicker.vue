@@ -24,9 +24,16 @@
 
 	export default {
 		props: {
+			value: {
+				type: Object
+			},
 			geo: {
 				type: Boolean,
 				default: true,
+			},
+			height: {
+				type: String,
+				default: '500px'
 			},
 			initialLocation: {
 				type: Array,
@@ -63,7 +70,7 @@
 			containerCSS() {
 				return {
 					width: "100%",
-					height: "1000px",
+					height: this.height,
 				};
 			},
 		},

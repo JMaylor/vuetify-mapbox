@@ -1,20 +1,21 @@
 <template>
 	<div id="app">
-		<Form
-			:geo="true"
-			:initialLocation="[-0.496934, 51.437032]"
-			:apiKey="apiKey"
-		/>
+		<LocationPicker v-model="location" :apiKey="apiKey" />
 	</div>
 </template>
 
 <script>
-	import Form from "./components/Form.vue";
+	import LocationPicker from "./components/LocationPicker.vue";
 
 	export default {
 		name: "App",
 		components: {
-			Form,
+			LocationPicker,
+		},
+		data() {
+			return {
+				location: null,
+			};
 		},
 		computed: {
 			apiKey() {
