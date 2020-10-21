@@ -2,9 +2,11 @@
 
 Location Picker for Vuetify JS, using [Mapbox API](https://www.mapbox.com/).
 
-Online Demo
+[Online Demo](https://determined-shirley-06c8cd.netlify.app/)
 
-Demo Source Code
+[Demo Source Code](https://github.com/JMaylor/vuetify-mapbox/blob/main/src/App.vue)
+
+[npm page](https://www.npmjs.com/package/vuetify-location-picker)
 
 ## Installation
 
