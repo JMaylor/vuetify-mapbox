@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<v-toolbar
-			dense
-			floating
-			class="map-toolbar"
-			v-if="searchForm || geo"
-		>
+		<v-toolbar dense floating class="map-toolbar" v-if="searchForm || geo">
 			<v-form @submit.prevent="search" v-if="searchForm">
 				<v-text-field
 					hide-details
@@ -29,8 +24,8 @@
 
 	export default {
 		model: {
-			prop: 'datetime',
-			event: 'input'
+			prop: "datetime",
+			event: "input",
 		},
 		props: {
 			value: {
@@ -118,10 +113,7 @@
 					.addTo(this.map);
 			},
 			setLocationCoordinates(lngLat) {
-				this.location.coordinates = [
-					Math.round(lngLat.lng * 10000) / 10000,
-					Math.round(lngLat.lat * 10000) / 10000,
-				];
+				this.location.coordinates = [lngLat.lng, lngLat.lat];
 			},
 			requestLocation() {
 				// Request to get the user's current location
@@ -138,7 +130,7 @@
 				this.removeMapMarkers();
 				this.addMapMarker(lngLat);
 				this.setLocationCoordinates(lngLat);
-				this.$emit('input', this.location)
+				this.$emit("input", this.location);
 			},
 			async search() {
 				const response = await fetch(
