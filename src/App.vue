@@ -5,7 +5,7 @@
 				<v-checkbox v-model="geo" label="geo"></v-checkbox>
 				<v-checkbox v-model="searchForm" label="search"></v-checkbox>
 				<v-color-picker v-model="color"></v-color-picker>
-
+				<p>{{ location }}</p>
 				<LocationPicker
 					v-model="location"
 					ref="locationPicker"
@@ -13,7 +13,8 @@
 					:geo="geo"
 					:searchForm="searchForm"
 					:color="color"
-			/></v-container>
+				/>
+			</v-container>
 		</v-main>
 	</v-app>
 </template>
@@ -28,7 +29,7 @@
 		},
 		data() {
 			return {
-				location: null,
+				location: [],
 				geo: true,
 				searchForm: true,
 				height: 500,

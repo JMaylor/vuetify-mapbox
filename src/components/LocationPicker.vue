@@ -68,10 +68,7 @@
 			return {
 				map: null,
 				query: "",
-				location: {
-					type: "Point",
-					coordinates: [],
-				},
+				location: [],
 			};
 		},
 		computed: {
@@ -113,7 +110,7 @@
 					.addTo(this.map);
 			},
 			setLocationCoordinates(lngLat) {
-				this.location.coordinates = [lngLat.lng, lngLat.lat];
+				this.location = [lngLat.lng, lngLat.lat];
 			},
 			requestLocation() {
 				// Request to get the user's current location
