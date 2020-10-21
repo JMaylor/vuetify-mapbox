@@ -1,7 +1,12 @@
 <template>
-	<v-row>
-		<v-toolbar dense floating class="map-toolbar mt-1" max-width="300px" min-width="300px">
-			<v-form @submit.prevent="search">
+	<div>
+		<v-toolbar
+			dense
+			floating
+			class="map-toolbar"
+			v-if="searchForm || geo"
+		>
+			<v-form @submit.prevent="search" v-if="searchForm">
 				<v-text-field
 					hide-details
 					prepend-icon="mdi-magnify"
@@ -16,18 +21,26 @@
 			</v-btn>
 		</v-toolbar>
 		<div :id="containerID" :style="containerCSS"></div>
-	</v-row>
+	</div>
 </template>
 
 <script>
 	const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
 
 	export default {
+		model: {
+			prop: 'datetime',
+			event: 'input'
+		},
 		props: {
 			value: {
 				type: Object,
 			},
 			geo: {
+				type: Boolean,
+				default: true,
+			},
+			searchForm: {
 				type: Boolean,
 				default: true,
 			},
@@ -89,9 +102,6 @@
 				this.map.addControl(new mapboxgl.NavigationControl());
 
 				// Add Click Listener
-				this.addMapClickListener();
-			},
-			addMapClickListener() {
 				this.map.on("click", (e) => {
 					this.setLocation(e.lngLat);
 				});
@@ -128,6 +138,7 @@
 				this.removeMapMarkers();
 				this.addMapMarker(lngLat);
 				this.setLocationCoordinates(lngLat);
+				this.$emit('input', this.location)
 			},
 			async search() {
 				const response = await fetch(
@@ -150,11 +161,6 @@
 		mounted() {
 			this.initMap();
 		},
-		watch: {
-			height: function() {
-				this.map.resize()
-			}
-		}
 	};
 </script>
 

@@ -3,19 +3,15 @@
 		<v-main>
 			<v-container>
 				<v-checkbox v-model="geo" label="geo"></v-checkbox>
-				<v-text-field
-					label="height"
-					v-model="height"
-					type="number"
-					style="width: 60px"
-				></v-text-field>
+				<v-checkbox v-model="searchForm" label="search"></v-checkbox>
 				<v-color-picker v-model="color"></v-color-picker>
 
 				<LocationPicker
 					v-model="location"
+					ref="locationPicker"
 					:apiKey="apiKey"
 					:geo="geo"
-					:height="`${height}px`"
+					:searchForm="searchForm"
 					:color="color"
 			/></v-container>
 		</v-main>
@@ -33,10 +29,10 @@
 		data() {
 			return {
 				location: null,
-				geo: false,
-				geoOptions: [true, false],
+				geo: true,
+				searchForm: true,
 				height: 500,
-				color: "#973333ED",
+				color: "#FFA500",
 			};
 		},
 		computed: {
